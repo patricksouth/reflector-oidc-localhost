@@ -1,0 +1,30 @@
+########################################################################################
+##
+## OIDC Settings
+##
+########################################################################################
+##
+## See auth_openidc.conf.orig for all config items and descriptions
+##
+
+##  Typical host configuration items
+OIDCRedirectURI https://localhost:5001/secure/redirect_uri
+OIDCCryptoPassphrase you_should_really_choose_your_own_value_here_....
+OIDCUserInfoRefreshInterval 15
+
+## Values you might need to add to the OIDC OP
+## Home URL: https://localhost.local:5001
+## Call Back URL: https://localhost:5001/secure/redirect_uri
+
+## Per RP Settings - Only enable a single RP at a time.
+## Name/environ: <description>
+## OIDC OP Name: <description>
+## Private/Public: 
+## Config URL:  <description>
+# OIDCClientID <your_client_id>
+# OIDCClientSecret <your_client_secret>
+# OIDCResponseType "code"
+# OIDCScope "openid email profile"
+# OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration
+# OIDCUserInfoRefreshInterval 600
+
