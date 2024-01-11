@@ -27,4 +27,3 @@ OIDCUserInfoRefreshInterval 15
 # OIDCScope "openid email profile"
 # OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration
 # OIDCUserInfoRefreshInterval 600
-
