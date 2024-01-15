@@ -1,6 +1,7 @@
 
 
 This is a local host example that connects to an OIDC OP and reflects attributes passed by the OP. 
+This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens.
 You need to register this service with the OIDC OP before this example will function.
 
 Build the image with:
