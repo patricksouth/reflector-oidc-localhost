@@ -48,3 +48,5 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Config
+auth_openidc.conf

@@ -4,26 +4,32 @@
 ##
 ########################################################################################
 ##
-## See auth_openidc.conf.orig for all config items and descriptions
+## See https://github.com/OpenIDC/mod_auth_openidc/blob/master/auth_openidc.conf
+## for all config items and descriptions
 ##
 
 ##  Typical host configuration items
 OIDCRedirectURI https://localhost:5001/secure/redirect_uri
-OIDCCryptoPassphrase you_should_really_choose_your_own_value_here_....
+OIDCCryptoPassphrase "/bin/bash -c 'head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32'"
 OIDCUserInfoRefreshInterval 15
 
 ## Values you might need to add to the OIDC OP
 ## Home URL: https://localhost.local:5001
 ## Call Back URL: https://localhost:5001/secure/redirect_uri
 
-## Per RP Settings - Only enable a single RP at a time.
+## Per RP Settings - Only enable a single RP at a time - descriptions
 ## Name/environ: <description>
 ## OIDC OP Name: <description>
-## Private/Public: 
+## Private/Public: <private/public>
 ## Config URL:  <description>
-# OIDCClientID <your_client_id>
-# OIDCClientSecret <your_client_secret>
-# OIDCResponseType "code"
-# OIDCScope "openid email profile"
-# OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration
-# OIDCUserInfoRefreshInterval 600
+
+## configuration items
+OIDCClientID <your_client_id>
+OIDCClientSecret <your_client_secret>
+OIDCResponseType "code"
+OIDCScope "openid email profile"
+OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration
+OIDCUserInfoRefreshInterval 600
+OIDCPKCEMethod S256
+OIDCCookieSameSite On
+OIDCPassClaimsAs both latin1
