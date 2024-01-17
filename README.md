@@ -1,8 +1,8 @@
 # README
 
-This is a local host example that deploys an attribut reflector for an **OIDC RP** that displays attributes release by the **OIDC OP** after successful authenication. This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens.
+This is a local host example that deploys an attribut reflector for an **OIDC RP** that displays attributes release by the **OIDC OP** after successful authenication. 
 
-Register this RP with an OIDC OP before starting this service.
+This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens.
 
 ## Configuration Before Deploying
 

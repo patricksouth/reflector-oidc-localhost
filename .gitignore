@@ -49,4 +49,4 @@ Thumbs.db
 *.wmv
 
 # Config
-auth_openidc.conf
+src/auth_openidc.conf
