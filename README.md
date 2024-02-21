@@ -18,12 +18,12 @@ Build the Docker image with:
 
 To create the certs run the following:
 
-```openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout src/server.key -out src/server.crt ```
+```openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout src/server.key -out src/server.crt```
 
 Start the service with:
 ```docker compose up ```
 
-From within a browser, access the localhost URL and accept invalid certs warning. Depending on the locahost config, it maybe necessary to route traffic to ports 5000 and 5001.
+From within a browser, access the localhost URL and accept the invalid certs warning. Depending on the host and/or guest config, it maybe necessary to route traffic to ports 5000 and 5001.
 
 <b>https://localhost:5001/</b>
 
