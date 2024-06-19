@@ -33,14 +33,22 @@
 
 $list = [
   'REMOTE_USER',
-  'OIDC_CLAIM_affiliation',
+  'OIDC_CLAIM_eduperson_affiliation',
+  'OIDC_CLAIM_eduperson_scoped_affiliation',
   'OIDC_CLAIM_email',
   'OIDC_CLAIM_eppn',
+  'OIDC_CLAIM_eduperson_targeted_id',
   'OIDC_CLAIM_eptid',
+  'OIDC_CLAIM_aueduperson_shared_token',
   'OIDC_CLAIM_family_name',
   'OIDC_CLAIM_given_name',
+  'OIDC_CLAIM_home_organization',
+  'OIDC_CLAIM_home_organization_type',
+  'OIDC_CLAIM_mobile',
   'OIDC_CLAIM_name',
-  'OIDC_CLAIM_idp',
+  'OIDC_CLAIM_nickname',
+  'OIDC_CLAIM_organization_name',
+  'OIDC_CLAIM_idp_entityid',
   'OIDC_CLAIM_idp_name',
   'OIDC_CLAIM_isMemberOf',
   'OIDC_access_token',
@@ -56,6 +64,10 @@ $list = [
   'OIDC_CLAIM_aud',
   'SSL_TLS_SNI',
   'OIDC_CLAIM_cert_subject_dn',
+#  'OIDC_CLAIM_special1',
+  'OIDC_CLAIM_uid',
+#  'OIDC_CLAIM_special2',
+#  'OIDC_CLAIM_special3',
 ];
 
 function isMemberOf_list ($val) {
