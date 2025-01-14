@@ -1,8 +1,10 @@
 # Simple docker compose file
-version: '3.6'
+# port choices depend on localhost config
+#version: '3.6'
 
 services:
   test:
+    container_name: reflector
     image: reflector-oidc-localhost:1
     volumes:
       - ./public-html:/var/www/html
@@ -11,5 +13,5 @@ services:
       - ./src/000-webserver.conf:/etc/apache2/sites-available/000-webserver.conf
       - ./src/auth_openidc.conf:/etc/apache2/mods-available/auth_openidc.conf
     ports:
-       - 5000:80
-       - 5001:443
+       - 80:80
+       - 443:443

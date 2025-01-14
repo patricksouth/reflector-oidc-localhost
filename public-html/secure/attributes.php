@@ -56,6 +56,9 @@ $list = [
   'OIDC_CLAIM_aud',
   'SSL_TLS_SNI',
   'OIDC_CLAIM_cert_subject_dn',
+  'OIDC_CLAIM_voPersonID',
+  'OIDC_CLAIM_groups',
+  'OIDC_CLAIM_uid'
 ];
 
 function isMemberOf_list ($val) {
@@ -124,11 +127,11 @@ foreach ($list as $claim) {
 ?>
 </table>
 
-<!-- Prints all info 
+<!-- Prints all info -->
 <?php
  phpinfo(INFO_VARIABLES);
 ?>
--->
+<!-- -->
 </body>
 </html>
 
