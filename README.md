@@ -4,6 +4,8 @@ This is a local host example that deploys an attribut reflector for an **OIDC RP
 
 This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens.
 
+Register this RP with an OIDC OP before starting this service.
+
 ## Configuration Before Deploying
 
 Copy the example file ```src/auth_openidc.conf.example``` to ```src/auth_openidc.conf``` as a starting OIDC RP config and update with relevant details.
@@ -14,14 +16,23 @@ for all config items and descriptions
 
 Build the Docker image with: 
 
-```docker build -t reflector-oidc-localhost:1 . ```
+```make build ```
 
 To create the certs run the following:
 
 ```openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout src/server.key -out src/server.crt```
 
 Start the service with:
-```docker compose up ```
+```make start ```
+
+Restart the service with:
+```make restart ```
+
+Stop the service with:
+```make stop ```
+
+View logs with:
+```make log ```
 
 From within a browser, access the localhost URL and accept the invalid certs warning. Depending on the host and/or guest config, it maybe necessary to route traffic to ports 5000 and 5001.
 

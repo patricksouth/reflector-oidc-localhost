@@ -1,9 +1,10 @@
 # Simple docker compose file
-# port choices depend on localhost config
+# port choices depend on localhost config 
+#May need to also adjust the OIDCRedirectURI
 #version: '3.6'
 
 services:
-  test:
+  httpd:
     container_name: reflector
     image: reflector-oidc-localhost:1
     volumes:

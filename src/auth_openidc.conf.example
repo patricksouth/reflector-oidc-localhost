@@ -12,6 +12,10 @@
 OIDCRedirectURI https://localhost:5001/secure/redirect_uri
 OIDCCryptoPassphrase "/bin/bash -c 'head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32'"
 OIDCUserInfoRefreshInterval 15
+OIDCUserInfoRefreshInterval 600
+OIDCPKCEMethod S256
+OIDCCookieSameSite On
+OIDCPassClaimsAs both latin1
 
 ## Values you might need to add to the OIDC OP
 ## Home URL: https://localhost.local:5001
@@ -29,7 +33,3 @@ OIDCClientSecret <your_client_secret>
 OIDCResponseType "code"
 OIDCScope "openid email profile"
 OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration
-OIDCUserInfoRefreshInterval 600
-OIDCPKCEMethod S256
-OIDCCookieSameSite On
-OIDCPassClaimsAs both latin1

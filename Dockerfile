@@ -1,5 +1,5 @@
 FROM php:8.4-apache 
-LABEL "BUILD"="docker build -t reflector-oidc-localhost:1 ."
+LABEL "BUILD"="docker build -t reflector-oidc:1 ."
 
 RUN apt update && apt dist-upgrade -y && \
   apt install -y \
@@ -22,6 +22,6 @@ RUN a2enmod rewrite && \
     a2ensite 000-webserver && \
     service apache2 restart
 
-EXPOSE 443 80
+EXPOSE 80 443
 
 CMD ["apache2-foreground"]

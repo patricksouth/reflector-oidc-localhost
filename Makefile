@@ -1,3 +1,5 @@
+IMAGE_NAME=reflector-oidc
+TAG=1
 
 start:
 	docker compose up -d
@@ -8,8 +10,9 @@ stop:
 restart:
 	docker compose down
 	docker compose up -d
+
 build:
-	docker build -t reflector-oidc-localhost:1 .
+	docker build -t $(IMAGE_NAME):$(TAG) .
 
 log:
 	docker logs -f reflector
