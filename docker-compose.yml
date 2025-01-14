@@ -6,7 +6,7 @@
 services:
   httpd:
     container_name: reflector
-    image: reflector-oidc-localhost:1
+    image: reflector-oidc:1
     volumes:
       - ./public-html:/var/www/html
       - ./src/server.crt:/etc/ssl/certs/server.crt
