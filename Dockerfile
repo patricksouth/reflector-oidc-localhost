@@ -1,5 +1,5 @@
 FROM php:8.4-apache 
-LABEL BUILD docker build -t reflector-oidc-localhost:1 .
+LABEL "BUILD"="docker build -t reflector-oidc-localhost:1 ."
 
 RUN apt update && apt dist-upgrade -y && \
   apt install -y \
