@@ -1,7 +1,6 @@
 # Simple docker compose file
-# port choices depend on localhost config 
-#May need to also adjust the OIDCRedirectURI
-#version: '3.6'
+# Port choices depend on localhost config 
+# May need to also adjust the OIDCRedirectURI
 
 services:
   httpd:
@@ -12,7 +11,8 @@ services:
       - ./src/server.crt:/etc/ssl/certs/server.crt
       - ./src/server.key:/etc/ssl/private/server.key
       - ./src/000-webserver.conf:/etc/apache2/sites-available/000-webserver.conf
-      - ./src/auth_openidc.conf:/etc/apache2/mods-available/auth_openidc.conf
+      - ./src/auth_openidc.conf:/etc/apache2/conf-available/auth_openidc.conf
+#      - ${PWD}/logs:/var/log/apache2/
     ports:
        - 80:80
        - 443:443
