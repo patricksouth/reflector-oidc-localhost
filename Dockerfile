@@ -1,7 +1,7 @@
-ARG PHP_VER=${PHP_VER:-php:8.3.21-apache-bookworm}
+ARG PHP_IMAGE=${PHP_IMAGE:-php:8.3.21-apache-bookworm}
 
-FROM ${PHP_VER}
-LABEL "BUILD"="docker build -t reflector-oidc:1 -f Dockerfile3 . --build-arg MOD_AUTH_OPENIDC_VERSION=2.4.17 --build-arg PHP_VER=php:8.3.21-apache-bookworm"
+FROM ${PHP_IMAGE}
+LABEL "BUILD"="docker build -t reflector-oidc:1 -f Dockerfile . --build-arg MOD_AUTH_OPENIDC_VERSION=2.4.17 --build-arg PHP_IMAGE=php:8.3.21-apache-bookworm"
 
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 ARG MOD_AUTH_OPENIDC_VERSION

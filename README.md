@@ -1,8 +1,8 @@
 # README
 
-This is a local host example that deploys an attribut reflector for an **OIDC RP** that displays attributes release by the **OIDC OP** after successful authenication. 
+This is a local host example that deploys an attribut reflector for an **OIDC RP** that displays attributes released by the **OIDC OP** after successful authenication. 
 
-This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens.
+This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens - this is still a work in progress.
 
 Register this RP with an OIDC OP before starting this service.
 
@@ -13,6 +13,14 @@ See [https://github.com/OpenIDC/mod_auth_openidc/blob/master/auth_openidc.conf](
 for all config items and descriptions
 
 ## USAGE
+
+If necessary, update the ```Makefile``` file with later releases of the PHP and OIDC module or continue with defaults.
+
+Later PHP releases here: [https://hub.docker.com/_/php/tags](https://hub.docker.com/_/php/tags).
+
+Later mod_auth_openidc Apache module here: [https://github.com/OpenIDC/mod_auth_openidc/releases](https://github.com/OpenIDC/mod_auth_openidc/releases).
+
+For the mod_auth_openidc, just use the version number.
 
 Build the Docker image with: 
 
@@ -34,9 +42,11 @@ Stop the service with:
 View logs with:
 ```make log ```
 
-From within a browser, access the localhost URL and accept the invalid certs warning. Depending on the host and/or guest config, it maybe necessary to route traffic to ports 5000 and 5001.
+From within a browser, access the localhost URL and accept the invalid certs warning.
 
-<b>https://localhost:5001/</b>
+Depending on the host and/or guest config, it maybe necessary to route traffic to ports 5000 and 5001 and update the ```docker-compose.yml``` file.       
+
+Use <b>https://localhost/</b>
 
 
 Follow the link "OIDC - Attribute Reflector" and then 
@@ -44,12 +54,9 @@ Follow the link "OIDC - Attribute Reflector" and then
 
 On the redirect after login, the local host may be slow to respond, give it a chance.
 
-
-<i>This is derivative work based on php:8-apache Docker image from: </i>
-
-https://hub.docker.com/_/php/
+<i>This is a derivative work based on the PHP Docker image and (https://github.com/OpenIDC/mod_auth_openidc) </i>
 
 <b>Notes for configuring the OIDC OP</b>
 
-Home URL: https://localhost.local:5001
-Callback/redirect_uri parameter: https://localhost:5001/secure/redirect_uri
+Home URL: https://localhost.local
+Callback/redirect_uri parameter: https://localhost/secure/redirect_uri

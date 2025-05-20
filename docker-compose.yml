@@ -1,6 +1,6 @@
 # Simple docker compose file
 # Port choices depend on localhost config 
-# May need to also adjust the OIDCRedirectURI
+# May need to add a port to the OIDCRedirectURI URL
 
 services:
   httpd:
