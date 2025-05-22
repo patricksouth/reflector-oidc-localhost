@@ -19,7 +19,7 @@ RUN apt update && apt dist-upgrade -y && \
         libjansson-dev \
         libcjose0 \
         libcjose-dev && \
-	apt autoremove && apt clean && \
+        apt autoremove && apt clean && \
         rm -rf /var/lib/apt/lists/*
 
 RUN MOD_AUTH_OPENIDC_URL="https://github.com/OpenIDC/mod_auth_openidc/releases/download/v${MOD_AUTH_OPENIDC_VERSION}/mod_auth_openidc-${MOD_AUTH_OPENIDC_VERSION}.tar.gz" && \
@@ -30,21 +30,24 @@ RUN MOD_AUTH_OPENIDC_URL="https://github.com/OpenIDC/mod_auth_openidc/releases/d
     ./configure --with-apxs2=`which apxs2` && \
     make && \
     make install && \
-    echo "LoadModule auth_openidc_module /usr/lib/apache2/modules/mod_auth_openidc.so" > /etc/apache2/mods-available/auth_openidc.load && \
     rm -rf /tmp/mod_auth_openidc && \
+    echo "LoadModule auth_openidc_module /usr/lib/apache2/modules/mod_auth_openidc.so" > /etc/apache2/mods-available/auth_openidc.load && \
     touch /etc/apache2/sites-available/000-webserver.conf && \
-    touch /etc/apache2/conf-available/auth_openidc.conf
+    touch /etc/apache2/sites-available/auth_openidc.conf
+
+COPY src/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
+COPY src/conf-available/security.conf /etc/apache2/conf-available/security.conf
 
 RUN a2enmod rewrite && \
     a2enmod auth_openidc && \
     a2enmod socache_shmcb && \
     a2enmod ssl && \
     a2enmod headers && \
+    a2enconf security && \
     a2dismod status && \
     a2dissite 000-default  && \
     a2ensite 000-webserver && \
-    a2enconf auth_openidc && \
-    service apache2 restart
+    a2ensite auth_openidc
 
 EXPOSE 80 443
 
