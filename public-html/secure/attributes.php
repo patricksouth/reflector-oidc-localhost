@@ -1,31 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../public/style.css">
 </head>
-<style>
-  table, th, tr, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 3px;
-    text-align: left;
-    vertical-align: top;
-  }
-  td {
-    max-width: 800px;
-    word-wrap: break-word;
-  }
-  .novalue {
-    font-weight: bold;
-    color: red;
-  }
-  .token {
-    font-weight: bold;
-    color: limegreen;
-  }
-</style>
 <body>
 <h1>OIDC - Attribute Reflector</h1>
-<a href="../public/attributes.php"><b>Access the unprotected page</b></a> <br><br>
+<a href="../public/attributes.php"><b>Access the unprotected page</b></a> &nbsp;
+<a href="/secure/redirect_uri?logout=https://localhost"><b>Logout</b></a>
+<br><br>
 
 <table> <tr> <th>Attributes</th> <th>Values</th> </tr>
 
