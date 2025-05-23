@@ -1,7 +1,8 @@
 # Simple docker compose file
 # Port choices depend on localhost config 
-# May need to add a port to the OIDCRedirectURI URL
+# May need to update the port to the OIDCRedirectURI URL
 
+name: reflector
 services:
   httpd:
     container_name: reflector
@@ -11,7 +12,7 @@ services:
       - ./src/server.crt:/etc/ssl/certs/server.crt
       - ./src/server.key:/etc/ssl/private/server.key
       - ./src/000-webserver.conf:/etc/apache2/sites-available/000-webserver.conf
-      - ./src/auth_openidc.conf:/etc/apache2/sites-available/auth_openidc.conf
+      - ./src/auth_openidc.conf:/etc/apache2/conf-available/auth_openidc.conf
 #      - ${PWD}/logs:/var/log/apache2/
     ports:
        - 80:80

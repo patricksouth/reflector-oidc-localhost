@@ -1,4 +1,3 @@
-
 IMAGE_NAME=reflector-oidc
 TAG=1
 PHP_IMAGE=php:8.4-apache
@@ -18,3 +17,4 @@ build:
 
 log:
 	docker logs -f reflector
+
