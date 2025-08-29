@@ -49,8 +49,7 @@ Depending on the host and/or guest config, it maybe necessary to route traffic t
 Use <b>https://localhost/</b>
 
 
-Follow the link "OIDC - Attribute Reflector" and then 
-"Access the protected page" and when prompted complete a login.
+Click the "Login" button and when prompted complete a login.
 
 On the redirect after login, the local host may be slow to respond, give it a chance.
 
