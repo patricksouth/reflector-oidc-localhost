@@ -18,3 +18,6 @@ build:
 log:
 	docker logs -f reflector
 
+cli:
+	docker exec -it reflector bash
+

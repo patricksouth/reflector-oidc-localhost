@@ -1,13 +1,23 @@
+<?php
+
+  // home.php
+ 
+  $title = "Home Page";
+  session_start();
+
+  if (isset($_SESSION['user_info'])) {
+	  $userInfo = $_SESSION['user_info'];
+	  echo $userInfo;
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="../public/style.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h1>OIDC - Attribute Reflector</h1>
-<a href="../public/attributes.php"><b>Access the unprotected page</b></a> &nbsp;
-<a href="/secure/redirect_uri?logout=https://localhost"><b>Logout</b></a>
-<br><br>
+<h2>OIDC - Attribute Reflector</h2>
 
 <table> <tr> <th>Attributes</th> <th>Values</th> </tr>
 
@@ -25,22 +35,24 @@ $list = [
   'OIDC_CLAIM_idp',
   'OIDC_CLAIM_idp_name',
   'OIDC_CLAIM_isMemberOf',
-  'OIDC_access_token',
-  'OIDC_CLAIM_sub',
-  'OIDC_CLAIM_iss',
-  'OIDC_CLAIM_jti',
-  'OIDC_CLAIM_nonce',
-  'OIDC_CLAIM_auth_time',
-  'OIDC_CLAIM_exp',
-  'OIDC_access_token_expires',
-  'HTTPS',
+#  'OIDC_access_token',
+#  'OIDC_CLAIM_sub',
+#  'OIDC_CLAIM_iss',
+#  'OIDC_CLAIM_jti',
+#  'OIDC_CLAIM_nonce',
+#  'OIDC_CLAIM_auth_time',
+#  'OIDC_CLAIM_exp',
+#  'OIDC_access_token_expires',
+#  'HTTPS',
   'OIDC_CLAIM_acr',
   'OIDC_CLAIM_aud',
-  'SSL_TLS_SNI',
-  'OIDC_CLAIM_cert_subject_dn',
-  'OIDC_CLAIM_voPersonID',
-  'OIDC_CLAIM_groups',
-  'OIDC_CLAIM_uid'
+#  'SSL_TLS_SNI',
+#  'OIDC_CLAIM_cert_subject_dn',
+#  'OIDC_CLAIM_voPersonID',
+#  'OIDC_CLAIM_groups',
+#  'OIDC_CLAIM_uid',
+  'OIDC_CLAIM_terms_and_conditions',
+  'OIDC_CLAIM_training_courses'
 ];
 
 function isMemberOf_list ($val) {
@@ -109,11 +121,14 @@ foreach ($list as $claim) {
 ?>
 </table>
 
-<!-- Prints all info -->
+<a href="/secure/redirect_uri?logout=https://localhost"><b>Logout</b></a> </td>
+
+
+<!-- Prints all info 
 <?php
  phpinfo(INFO_VARIABLES);
 ?>
-<!-- -->
+ -->
 </body>
 </html>
 

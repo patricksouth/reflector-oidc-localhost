@@ -13,34 +13,41 @@ RUN echo "OpenIDC verison: ${MOD_AUTH_OPENIDC_VERSION}"
 RUN apt update \
     && apt dist-upgrade -y \
     && apt install -y \
-        curl wget \
-        apache2-dev \
-        libcurl4-openssl-dev \
-        openssl \
-        libssl-dev \
-        libjansson-dev \
-        libcjose0 \
-        libcjose-dev 
+       apache2 \
+       apache2-dev \
+       automake \
+       ca-certificates \
+       libcjose0 \
+       libcjose-dev \
+       libcurl4-openssl-dev \
+       libjansson-dev \
+       libpcre3-dev \
+       libssl-dev \
+       pkg-config \
+       wget curl
 
 RUN MOD_AUTH_OPENIDC_URL="https://github.com/OpenIDC/mod_auth_openidc/releases/download/v${MOD_AUTH_OPENIDC_VERSION}/mod_auth_openidc-${MOD_AUTH_OPENIDC_VERSION}.tar.gz" \
     && mkdir -p /tmp/mod_auth_openidc \
     && wget -O mod_auth_openidc.tar.gz "${MOD_AUTH_OPENIDC_URL}" \
     && tar -zxf mod_auth_openidc.tar.gz -C /tmp/mod_auth_openidc --strip-components=1 \
     && cd /tmp/mod_auth_openidc \
-    && ./configure --with-apxs2=`which apxs2` \
+    && ./configure \
     && make \
-    && make install 
+    && make install
+#    && ./configure --with-apxs=`which apxs2` --with-jq=/usr/lib/x86_64-linux-gnu/ 
 
 FROM reflector
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-        libcjose0 \
-        openssl
+       libcjose0 \
+       openssl \
+       jq
 
 COPY --from=building /usr/lib/apache2/modules/mod_auth_openidc.so /usr/lib/apache2/modules/mod_auth_openidc.so
 COPY src/conf-available/security.conf /etc/apache2/conf-available/security.conf
 COPY src/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
+COPY src/mods-available/mod_php.conf /etc/apache2/mods-available/mod_php.conf
 
 RUN echo "LoadModule auth_openidc_module /usr/lib/apache2/modules/mod_auth_openidc.so" > /etc/apache2/mods-available/auth_openidc.load \
     && touch /etc/apache2/sites-available/000-webserver.conf \
