@@ -2,13 +2,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
-    padding: 20px;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
 }
-h1 {
+h1, h2 {
     color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+    font-size: 2.0rem;
+    margin-bottom: 10px;
 }
 a {
     display: inline-block;
@@ -44,4 +44,6 @@ td {
   font-weight: bold;
   color: limegreen;
 }
+
+
 
