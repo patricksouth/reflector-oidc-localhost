@@ -2,7 +2,7 @@ ARG PHP_IMAGE=${PHP_IMAGE:-php:8.3.21-apache-bookworm}
 
 FROM ${PHP_IMAGE} AS reflector
 
-FROM php:8.3.21-apache-bookworm AS building
+FROM ${PHP_IMAGE} AS building
 
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 ARG MOD_AUTH_OPENIDC_VERSION

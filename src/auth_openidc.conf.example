@@ -10,16 +10,26 @@
 
 ##  Typical host configuration items
 OIDCRedirectURI https://localhost:5001/secure/redirect_uri
+#OIDCRedirectURI https://localhost/secure/redirect_uri
+
 OIDCCryptoPassphrase "/bin/bash -c 'head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32'"
-OIDCUserInfoRefreshInterval 15
 OIDCUserInfoRefreshInterval 600
+OIDCResponseType "code"
 OIDCPKCEMethod S256
 OIDCCookieSameSite On
-OIDCPassClaimsAs both latin1
+OIDCUserInfoSignedResponseAlg RS256
 
-## Values you might need to add to the OIDC OP
-## Home URL: https://localhost.local:5001
-## Call Back URL: https://localhost:5001/secure/redirect_uri
+# To pass "OIDC_userinfo_json" claims to PHP for decoding use one of the following.
+OIDCPassUserInfoAs json # To make "OIDC_userinfo_json" claims available to PHP use this.
+#OIDCPassIDTokenAs payload  # To make "OIDC_id_token_payload" claims available to PHP use this.
+
+## Values you might need to add to the OIDC OP for registering this RP.
+## Home URL: 
+##	https://localhost.local:5001     OR
+##      https://localhost
+## Call Back URL: 
+##	https://localhost:5001/secure/redirect_uri
+##	https://localhost/secure/redirect_uri
 
 ## Per RP Settings - Only enable a single RP at a time - descriptions
 ## Name/environ: <description>
