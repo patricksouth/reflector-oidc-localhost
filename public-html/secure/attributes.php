@@ -1,28 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="/styles.css">
 </head>
-<style>
-  table, th, tr, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 3px;
-    text-align: left;
-    vertical-align: top;
-  }
-  td {
-    max-width: 800px;
-    word-wrap: break-word;
-  }
-  .novalue {
-    font-weight: bold;
-    color: red;
-  }
-  .token {
-    font-weight: bold;
-    color: limegreen;
-  }
-</style>
 <body>
 <h2>OIDC - Claim Reflector</h2>
 <table> <tr> <th>Claims</th> <th>Values</th> </tr>
