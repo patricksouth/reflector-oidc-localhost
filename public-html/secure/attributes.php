@@ -124,8 +124,9 @@ foreach ($list as $claim) {
 	}
     } elseif ($claim == "OIDC_userinfo_json") {
       if (! is_null($_SERVER["OIDC_userinfo_json"])) {
-        $data= $_SERVER["OIDC_userinfo_json"];
-        print ($data);
+        print ("<pre>");
+	print (json_encode(json_decode($_SERVER["OIDC_userinfo_json"]), JSON_PRETTY_PRINT));
+        print ("</pre>");
       } else {
         print ("<div class='novalue'>no value</div>");
 	print("No OIDC_userinfo_json");
@@ -139,7 +140,7 @@ foreach ($list as $claim) {
 print ("</table>");
 ?>
 
-<a href="/secure/redirect_uri?logout=https://localhost"><b>Logout</b></a> </td>
+<a href="/secure/redirect_uri?logout=https://localhost:8443"><b>Logout</b></a> </td>
 
 <!-- Prints all info -->
 <?php
