@@ -15,5 +15,5 @@ services:
       - ./src/auth_openidc.conf:/etc/apache2/conf-available/auth_openidc.conf
 #      - ${PWD}/logs:/var/log/apache2/
     ports:
-       - 80:80
-       - 443:443
+       - ${HTTP_PORT}:80
+       - ${HTTPS_PORT}:443
