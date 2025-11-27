@@ -4,8 +4,7 @@
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<h2>OIDC - Claim Reflector</h2>
-
+<h2>OIDC - Claims Reflector</h2>
 <table> <tr> <th>Claims</th> <th>Values</th> </tr>
 
 <?php error_reporting(0);

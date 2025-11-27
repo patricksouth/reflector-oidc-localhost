@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="../public/style.css">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 <h1>Attribute Reflector - OIDC</h1>
