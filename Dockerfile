@@ -1,7 +1,8 @@
-ARG PHP_IMAGE=${PHP_IMAGE:-php:8.3.21-apache-bookworm}
+ARG PHP_IMAGE_VER=${PHP_IMAGE_VER}
+ARG PHP_IMAGE=php:${PHP_IMAGE_VER:-8.3.21}-apache-bookworm
 
 FROM ${PHP_IMAGE} AS reflector
-
+RUN echo "${PHP_IMAGE_VER}"
 FROM ${PHP_IMAGE} AS building
 
 ENV APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
@@ -31,10 +32,9 @@ RUN MOD_AUTH_OPENIDC_URL="https://github.com/OpenIDC/mod_auth_openidc/releases/d
     && wget -O mod_auth_openidc.tar.gz "${MOD_AUTH_OPENIDC_URL}" \
     && tar -zxf mod_auth_openidc.tar.gz -C /tmp/mod_auth_openidc --strip-components=1 \
     && cd /tmp/mod_auth_openidc \
-    && ./configure --with-apxs2=`which apxs2` \
+    && ./configure --with-apxs=`which apxs2` \
     && make \
-    && make install ./configure --with-apxs=`which apxs2` 
-    # --with-jq=/usr/lib/x86_64-linux-gnu/ 
+    && make install 
 
 FROM reflector
 
@@ -47,7 +47,6 @@ RUN apt-get update \
 COPY --from=building /usr/lib/apache2/modules/mod_auth_openidc.so /usr/lib/apache2/modules/mod_auth_openidc.so
 COPY src/conf-available/security.conf /etc/apache2/conf-available/security.conf
 COPY src/mods-available/ssl.conf /etc/apache2/mods-available/ssl.conf
-COPY src/mods-available/mod_php.conf /etc/apache2/mods-available/mod_php.conf
 
 RUN echo "LoadModule auth_openidc_module /usr/lib/apache2/modules/mod_auth_openidc.so" > /etc/apache2/mods-available/auth_openidc.load \
     && touch /etc/apache2/sites-available/000-webserver.conf \

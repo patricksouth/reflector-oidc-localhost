@@ -9,9 +9,7 @@
 ##
 
 ##  Typical host configuration items
-#OIDCRedirectURI https://localhost:5001/secure/redirect_uri
-OIDCRedirectURI https://localhost/secure/redirect_uri
-
+OIDCRedirectURI https://www.localhost:8443/secure/redirect_uri
 OIDCCryptoPassphrase "/bin/bash -c 'head /dev/urandom | tr -dc A-Za-z0-9 | head -c 32'"
 OIDCUserInfoRefreshInterval 600
 OIDCResponseType "code"
@@ -23,13 +21,11 @@ OIDCUserInfoSignedResponseAlg RS256
 OIDCPassUserInfoAs json # To make "OIDC_userinfo_json" claims available to PHP use this.
 #OIDCPassIDTokenAs payload  # To make "OIDC_id_token_payload" claims available to PHP use this.
 
-## Values you might need to add some details to the OIDC OP for registering this RP.
+## Values you will need to add to the OIDC OP, details might need to be adjusted when registering RP.
 ## Home URL: 
-##	https://localhost.local:5001     OR
-##  https://localhost
+##	https://www.localhost.local:8443
 ## Call Back URL: 
-##	https://localhost:5001/secure/redirect_uri     OR
-##	https://localhost/secure/redirect_uri
+##	https://www.localhost:8443/secure/redirect_uri
 
 ## Per RP Settings - Only enable a single RP at a time - descriptions
 ## Name/environ: <description>
@@ -41,5 +37,5 @@ OIDCPassUserInfoAs json # To make "OIDC_userinfo_json" claims available to PHP u
 OIDCClientID <your_client_id>
 OIDCClientSecret <your_client_secret>
 OIDCResponseType "code"
-OIDCScope "openid email profile"
+OIDCScope "openid email profile" # other scopes
 OIDCProviderMetadataURL https://<OIDC OP FQDN>/.well-known/openid-configuration

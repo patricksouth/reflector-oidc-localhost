@@ -1,10 +1,10 @@
 # README
 
-This is a local host example that deploys an attribut reflector for an **OIDC RP** that displays attributes released by the **OIDC OP** after successful authenication. 
+This is a local_host example that deploys an attribut reflector for an **OIDC RP** that displays attributes released by the **OIDC OP** after successful authenication. 
 
 This reflector is useful for troubleshooting OIDC claims including decoding encoded access tokens - this is still a work in progress.
 
-Register this RP with an OIDC OP before starting this service.
+Register this RP with the OIDC OP before starting this service.
 
 ## Configuration Before Deploying
 
@@ -14,13 +14,12 @@ for all config items and descriptions
 
 ## USAGE
 
-If necessary, update the ```Makefile``` file with later releases of the PHP and OIDC module or continue with defaults.
+If necessary, update the ```.env``` file with later versions of the PHP and OIDC modules or continue with defaults - just update version numbers. 
+Replace the container port numbers (8080/8443) if necessary before starting the service.
 
-Later PHP releases here: [https://hub.docker.com/_/php/tags](https://hub.docker.com/_/php/tags).
+PHP tags here: [https://hub.docker.com/_/php/tags](https://hub.docker.com/_/php/tags).
 
-Later mod_auth_openidc Apache module here: [https://github.com/OpenIDC/mod_auth_openidc/releases](https://github.com/OpenIDC/mod_auth_openidc/releases).
-
-For the mod_auth_openidc, just use the version number.
+OpenIDC mod_auth_openidc tags here: [https://github.com/OpenIDC/mod_auth_openidc/releases](https://github.com/OpenIDC/mod_auth_openidc/releases).
 
 Build the Docker image with: 
 
@@ -42,19 +41,19 @@ Stop the service with:
 View logs with:
 ```make log ```
 
-From within a browser, access the localhost URL and accept the invalid certs warning.
+From within a browser, access the localhost URL at the configured port and accept the invalid certs warning.
 
-Depending on the host and/or guest config, it maybe necessary to route traffic to ports 5000 and 5001 and update the ```docker-compose.yml``` file.       
+Depending on the host and/or guest config, it maybe necessary to route traffic to the ports configured (8080/8443).       
 
-Use <b>https://localhost/</b>
+With a browser acccess <b>https://www.localhost:8443/</b>
 
 Click the "Login" button and when prompted complete a login.
 
-On the redirect after login, the local host may be slow to respond, give it a chance.
+On the redirect after login, the local_host may be slow to respond, give it a chance.
 
 <i>This is a derivative work based on the PHP Docker image and (https://github.com/OpenIDC/mod_auth_openidc) </i>
 
 <b>Notes for configuring the OIDC OP</b>
 
-Home URL: https://localhost.local
-Callback/redirect_uri parameter: https://localhost/secure/redirect_uri
+Home URL: https://www.localhost:8443
+Callback/redirect_uri parameter: https://www.localhost:8443/secure/redirect_uri
