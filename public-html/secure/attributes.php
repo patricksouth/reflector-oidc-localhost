@@ -139,7 +139,7 @@ foreach ($list as $claim) {
 print ("</table>");
 ?>
 
-<a href="/secure/redirect_uri?logout=https://localhost:8443"><b>Logout</b></a> </td>
+<a href="/secure/redirect_uri?logout=https://www.localhost:8443"><b>Logout</b></a> </td>
 
 <!-- Prints all info
 <?php
