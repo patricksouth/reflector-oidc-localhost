@@ -8,14 +8,19 @@ Register this RP with the OIDC OP before starting this service.
 
 ## Configuration Before Deploying
 
-Copy the example file ```src/auth_openidc.conf.example``` to ```src/auth_openidc.conf``` as a starting OIDC RP config and update with relevant details.
+Copy the example file ```src/auth_openidc.conf.example``` to ```src/auth_openidc.conf``` as a starting OIDC RP config and update with relevant details, including isetting the port and the following items:
+- OIDCClientID
+- OIDCClientSecret
+- OIDCScope
+- OIDCProviderMetadataURL
+
 See [https://github.com/OpenIDC/mod_auth_openidc/blob/master/auth_openidc.conf](https://github.com/OpenIDC/mod_auth_openidc/blob/master/auth_openidc.conf)
 for all config items and descriptions
 
 ## USAGE
 
 If necessary, update the ```.env``` file with later versions of the PHP and OIDC modules or continue with defaults - just update version numbers. 
-Replace the container port numbers (8080/8443) if necessary before starting the service.
+Replace the container port numbers (8080/8443) to match the values in `auth_openidc.conf` file if necessary before starting the service.
 
 PHP tags here: [https://hub.docker.com/_/php/tags](https://hub.docker.com/_/php/tags).
 
