@@ -5,7 +5,10 @@
 </head>
 <body>
 <h2>OIDC - Claims Reflector</h2>
-<table> <tr> <th>Claims</th> <th>Values</th> </tr>
+<a class=logout href="/secure/redirect_uri?logout=https://localhost:8443"><b>Logout</b></a>
+<a href="/mfa/attributes.php"><b>MFA Sign In</b></a> <br><br>
+
+<table> <tbody> <tr> <th>Claims</th> <th>Values</th> </tr>
 
 <?php error_reporting(0);
 // Select the claims to print from the array.
@@ -14,7 +17,6 @@ $list = [
   'OIDC_CLAIM_sub',
   'OIDC_CLAIM_affiliation',
   'OIDC_CLAIM_email',
-  'OIDC_CLAIM_emailverified',
   'OIDC_CLAIM_eppn',
   'OIDC_CLAIM_eduPersonAssurance',
   'OIDC_CLAIM_family_name',
@@ -40,7 +42,9 @@ $list = [
 #  'OIDC_CLAIM_uid',
   'OIDC_CLAIM_terms_and_conditions',
   'OIDC_CLAIM_training_courses',
-  'OIDC_userinfo_json'
+  'OIDC_userinfo_json',
+  'OIDC_CLAIM_eduPersonEntitlement',
+  'OIDC_CLAIM_entitlement'
 ];
 
 function isMemberOf_list ($val) {
@@ -136,16 +140,16 @@ foreach ($list as $claim) {
   }
   print ("</td></tr>");
 }
-print ("</table>");
 ?>
+</tbody> </table>
 
-<a href="/secure/redirect_uri?logout=https://www.localhost:8443"><b>Logout</b></a> </td>
+<a href="/secure/redirect_uri?logout=https://localhost:8443"><b>Logout</b></a> </td>
 
-<!-- Prints all info
+<!-- Prints all info 
 <?php
  phpinfo(INFO_VARIABLES);
 ?>
- -->
+-->
 
 </body>
 </html>

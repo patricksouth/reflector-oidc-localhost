@@ -5,23 +5,36 @@
 </head>
 <body>
 <h1>oidc_error </h1>
-<a href="../secure/attributes.php"><b>Sign In</b></a> <br><br>
+<a href="../secure/attributes.php"><b>Access the non-MFA protected page</b></a> <br><br>
 
 <table> <tr> <th>Claims</th> <th>Values</th> </tr>
 <?php error_reporting(0);
-print ("<tr><td>" . "OIDC_ERROR" . "</td><td>");
+print ("<tr><td>" . "OIDC ERROR" . "</td><td>");
 print ($_SERVER['REDIRECT_OIDC_ERROR']) . "</td></tr>";
 
-print ("<tr><td>" . "OIDC_ERROR_DESC" . "</td><td>");
+print ("<tr><td>" . "OIDC ERROR DESC" . "</td><td>");
 print ($_SERVER['REDIRECT_OIDC_ERROR_DESC']);
 print ("</td></tr>");
 
+print ("<tr><td>" . "REDIRECT OIDC AUTHZ ERROR" . "</td><td>");
+print ($_SERVER['REDIRECT_OIDC_AUTHZ_ERROR']);
+print ("</td></tr>");
+
+print ("<tr><td>" . "REDIRECT STATUS" . "</td><td>");
+print ($_SERVER['REDIRECT_STATUS']);
+print ("</td></tr>");
+
+print ("<tr><td>" . "REDIRECT REMOTE USER" . "</td><td>");
+print ($_SERVER['REDIRECT_REMOTE_USER']);
+print ("</td></tr>");
 ?>
-<!-- 
+</table>
+
+<!-- -->
 <?php
  phpinfo(INFO_VARIABLES);
 ?>
- -->
+<!-- -->
 
 </body>
 </html>
