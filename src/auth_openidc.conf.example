@@ -18,8 +18,10 @@ OIDCCookieSameSite On
 OIDCUserInfoSignedResponseAlg RS256
 
 ## To pass "OIDC_userinfo_json" claims to PHP for decoding use one of the following.
-OIDCPassUserInfoAs json # To make "OIDC_userinfo_json" claims available to PHP use this.
-#OIDCPassIDTokenAs payload  # To make "OIDC_id_token_payload" claims available to PHP use this.
+# To make "OIDC_userinfo_json" claims available to PHP use this.
+OIDCPassUserInfoAs json
+# To make "OIDC_id_token_payload" claims available to PHP use this.
+#OIDCPassIDTokenAs payload  
 
 ## Values you will need to add to the OIDC OP, details might need to be adjusted when registering RP.
 ## Home URL: 

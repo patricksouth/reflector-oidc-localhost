@@ -12,7 +12,7 @@ restart:
 build:
 	docker build -t $(IMAGE_NAME):$(OIDC_VER) -f Dockerfile . --build-arg MOD_AUTH_OPENIDC_VERSION=$(OIDC_VER) --build-arg PHP_IMAGE_VER=$(PHP_IMAGE_VER)
 
-log:
+logs:
 	docker logs -f reflector
 
 cli:
