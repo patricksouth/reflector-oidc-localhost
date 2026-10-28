@@ -3,6 +3,16 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
+# Config files
+.env
+server.*
+.test*
+.json
+#oauth-console
+*.test*
+*.json
+*.pem
+
 # Node artifact files
 node_modules/
 dist/

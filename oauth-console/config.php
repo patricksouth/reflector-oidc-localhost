@@ -1,0 +1,1 @@
+<?php return ['token_endpoint'=>getenv('TOKEN_ENDPOINT'),'client_id'=>getenv('CLIENT_ID'),'client_secret'=>getenv('CLIENT_SECRET')];

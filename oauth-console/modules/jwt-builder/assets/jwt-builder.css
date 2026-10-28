@@ -1,0 +1,20 @@
+.tabs {
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.tab-content {
+    display: none;
+    border: 1px solid #cccccc;
+    padding: 20px;
+    background: #f8f8f8;
+}
+
+.tab-content.active {
+    display: block;
+}
