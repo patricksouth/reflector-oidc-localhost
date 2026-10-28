@@ -1,0 +1,10 @@
+.env
+config.yaml
+server.*
+000-webserver.conf
+auth_openidc.conf
+.git
+.gitignore
+.test*
+.json
+oauth-console

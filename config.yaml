@@ -1,0 +1,14 @@
+# Version tags for PHP https://hub.docker.com/_/php/tags
+# Verison tags for openID mod_auth https://github.com/OpenIDC/mod_auth_openidc/tags
+# OIDC SHA checksum: https://github.com/OpenIDC/mod_auth_openidc/releases/tag/v$(OIDC_VER)
+
+release:
+  VERSION: "1"
+  IMAGE_NAME: reflector-oidc
+networking:
+  HTTPS_PORT: 8443
+  HTTP_PORT: 8080
+components:
+  PHP_IMAGE_VER: 8.5.12
+  OIDC_VER: 2.4.20.3
+  OIDC_SHA256: 338e1cc1ceb8e0bdb2cb113936966b89ef2f24557502c61fe14e535fae14f7cd

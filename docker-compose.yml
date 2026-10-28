@@ -1,19 +1,15 @@
-# Simple docker compose file
-# Port choices depend on localhost config 
-# May need to update the port to the OIDCRedirectURI URL
-
-name: reflector
 services:
   httpd:
     container_name: reflector
-    image: reflector-oidc:${OIDC_VER}
+    image: "${IMAGE_NAME:?IMAGE_NAME is required}:${PHP_IMAGE_VER}-${OIDC_VER}-${RELEASE}"
     volumes:
       - ./public-html:/var/www/html
-      - ./src/server.crt:/etc/ssl/certs/server.crt
-      - ./src/server.key:/etc/ssl/private/server.key
-      - ./src/000-webserver.conf:/etc/apache2/sites-available/000-webserver.conf
-      - ./src/auth_openidc.conf:/etc/apache2/conf-available/auth_openidc.conf
+#      - ./oauth-console:/var/www/html
+      - ./src/server.crt:/etc/ssl/certs/server.crt:ro
+      - ./src/server.key:/etc/ssl/private/server.key:ro
+      - ./src/000-webserver.conf:/etc/apache2/sites-available/000-webserver.conf:ro
+      - ./src/auth_openidc.conf:/etc/apache2/conf-available/auth_openidc.conf:ro
 #      - ${PWD}/logs:/var/log/apache2/
     ports:
-       - ${HTTP_PORT}:80
-       - ${HTTPS_PORT}:443
+      - "127.0.0.1:${HTTP_PORT:?HTTP_PORT is required}:80"
+      - "127.0.0.1:${HTTPS_PORT:?HTTPS_PORT is required}:443"

@@ -1,18 +1,20 @@
-ARG PHP_IMAGE_VER=${PHP_IMAGE_VER}
-ARG PHP_IMAGE=php:${PHP_IMAGE_VER:-8.3.21}-apache-bookworm
+ARG PHP_IMAGE_VER
+ARG PHP_IMAGE=php:${PHP_IMAGE_VER:-8.5.12}-apache-bookworm
 
 FROM ${PHP_IMAGE} AS reflector
-RUN echo "${PHP_IMAGE_VER}"
-FROM ${PHP_IMAGE} AS building
+
+RUN apt-get update \
+    && apt-get dist-upgrade -y \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM reflector AS building
 
 ARG MOD_AUTH_OPENIDC_VERSION
-ENV MOD_AUTH_OPENIDC_VERSION=${MOD_AUTH_OPENIDC_VERSION:-2.4.17}
+ENV MOD_AUTH_OPENIDC_VERSION=${MOD_AUTH_OPENIDC_VERSION:-2.4.18.1}
+ARG OPENIDC_SHA256
 
-RUN echo "OpenIDC verison: ${MOD_AUTH_OPENIDC_VERSION}"
-
-RUN apt update \
-    && apt dist-upgrade -y \
-    && apt install -y \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
        apache2 \
        apache2-dev \
        automake \
@@ -24,11 +26,13 @@ RUN apt update \
        libpcre3-dev \
        libssl-dev \
        pkg-config \
-       wget curl
+       wget curl \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN MOD_AUTH_OPENIDC_URL="https://github.com/OpenIDC/mod_auth_openidc/releases/download/v${MOD_AUTH_OPENIDC_VERSION}/mod_auth_openidc-${MOD_AUTH_OPENIDC_VERSION}.tar.gz" \
     && mkdir -p /tmp/mod_auth_openidc \
     && wget -O mod_auth_openidc.tar.gz "${MOD_AUTH_OPENIDC_URL}" \
+    && printf '%s  %s\n' "${OPENIDC_SHA256}" mod_auth_openidc.tar.gz | sha256sum --check --strict - \
     && tar -zxf mod_auth_openidc.tar.gz -C /tmp/mod_auth_openidc --strip-components=1 \
     && cd /tmp/mod_auth_openidc \
     && ./configure --with-apxs=`which apxs2` \
@@ -61,10 +65,9 @@ RUN a2enmod rewrite \
     && a2enconf auth_openidc \
     && a2enconf security \
     && a2dissite 000-default \
-    && a2ensite 000-webserver 
+    && a2ensite 000-webserver \
+    && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80 443
 
 CMD ["apache2-foreground"]
-
-
